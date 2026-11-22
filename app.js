@@ -1,4 +1,4 @@
-var MY_TELEGRAM_USERNAME = "Fss_rikxxxxxxxxxxxxxxxxxxxxxxxxx";
+var MY_TELEGRAM_USERNAME = "DilnuraPedagogYurist";
 var ADMIN_LOGIN = "admin";
 var ADMIN_PASS = "admin123";
 
