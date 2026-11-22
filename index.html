@@ -128,27 +128,36 @@ body.dark-mode .user-btn{background:#334155;color:#f8fafc;border-color:#475569}
     <div class="container">
         <!-- 🏠 ASOSIY -->
         <section id="home" class="tab active">
-            <div class="hero">
-                <div style="max-width:580px">
-                    <span style="background:rgba(255,255,255,.16);padding:5px 12px;border-radius:20px;font-size:12px;font-weight:700">🇺🇿 O'ZBEKISTON RESPUBLIKASI QONUNCHILIK PORTALI</span>
-                    <h1 style="font-size:30px;margin:12px 0;line-height:1.25">O'z Huquqlaringizni Bilish — Kuchli Fuqarolik Belgisi!</h1>
-                    <p style="color:#dbeafe;margin-bottom:20px;font-size:15px">Yangi tahrirdagi Konstitutsiya, barcha Kodekslar sharhi, huquqiy testlar va rasmiy sertifikat bir platformada.</p>
-                    <div style="display:flex;gap:10px;flex-wrap:wrap">
+                     <div class="hero" style="background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 55%,#0369a1 100%);padding:36px">
+                <div style="flex:1;min-width:280px">
+                    <span style="background:rgba(245,158,11,.22);color:#fcd34d;border:1px solid rgba(245,158,11,.4);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700">⚖️ MUALLIFLIK HUQUQIY PORTALI</span>
+                    <h1 style="font-size:30px;margin:14px 0;line-height:1.25">DilnuraHuquq PRO — O'zbekiston Qonunchiligi Akademiyasi</h1>
+                    <p style="color:#dbeafe;margin-bottom:20px;font-size:15px;line-height:1.6">Yangi tahrirdagi Konstitutsiya, barcha Kodekslar sharhi, yuridik maslahatlar va huquqiy bilimlar sinovi bir platformada.</p>
+                    
+                    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
                         <button class="btn btn-gold" style="padding:13px 22px;font-size:15px" onclick="openTab('quiz')">⚡ Huquqiy Test Boshlash</button>
                         <button class="btn" style="background:rgba(255,255,255,.18);color:#fff;padding:13px 20px" onclick="openTab('const')">🇺🇿 Konstitutsiyani O'qish</button>
                     </div>
+
+                    <div class="stats" style="flex-wrap:wrap">
+                        <div class="stat"><h3 id="st-count">0</h3><small>Testlarim</small></div>
+                        <div class="stat"><h3 id="st-avg">0%</h3><small>O'rtacha</small></div>
+                        <div class="stat" style="background:rgba(16,185,129,.22);border:1px solid rgba(16,185,129,.4)">
+                            <div style="font-size:10px;color:#a7f3d0;font-weight:700">MAQOMINGIZ</div>
+                            <div id="user-rank-title" style="font-size:13px;font-weight:800;color:#fff;margin-top:2px">🌱 Yosh Huquqshunos</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="stats" style="flex-direction:column;min-width:190px">
-                    <div style="display:flex;gap:10px">
-                        <div class="stat" style="flex:1"><h3 id="st-count">0</h3><small>Testlarim</small></div>
-                        <div class="stat" style="flex:1"><h3 id="st-avg">0%</h3><small>O'rtacha</small></div>
-                    </div>
-                    <div class="stat" style="margin-top:4px;background:rgba(16,185,129,.25);border:1px solid rgba(16,185,129,.4)">
-                        <div style="font-size:11px;color:#a7f3d0;font-weight:700">HUQUQIY MAQOMINGIZ</div>
-                        <div id="user-rank-title" style="font-size:15px;font-weight:800;color:#fff;margin-top:2px">🌱 Yosh Huquqshunos</div>
-                    </div>
+
+                <!-- 👩‍⚖️ MUALLIF (ONANGIZNING) KATTA PORTRET RASMI -->
+                <div style="text-align:center;background:rgba(255,255,255,.08);padding:18px;border-radius:22px;border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(6px)">
+                    <img src="dilnura.jpg" alt="Dilnura" onerror="this.src='https://flaticon.com'" 
+                         style="width:210px;height:210px;border-radius:20px;object-fit:cover;border:4px solid #f59e0b;box-shadow:0 12px 25px rgba(0,0,0,.35);display:block;margin:0 auto">
+                    <h3 style="margin-top:12px;font-size:18px;color:#fff">Dilnura</h3>
+                    <span style="display:inline-block;margin-top:4px;background:#f59e0b;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:700">⚖️ Platforma Asoschisi</span>
                 </div>
             </div>
+
 
             <div class="grid-2" style="margin-bottom:24px">
                 <div class="card" style="border-left:5px solid #1d4ed8;background:linear-gradient(90deg,#eff6ff,#ffffff)">
