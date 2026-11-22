@@ -479,6 +479,7 @@
                 <div class="logo" onclick="openTab('home')">⚖️ DilnuraLowAcademy PRO</div>
                 <div class="menu">
                     <button class="active" data-t="home" onclick="openTab('home')">🏠 Asosiy</button>
+                    
                     <button data-t="const" onclick="openTab('const')">🇺🇿 Konstitutsiya</button>
                     <button data-t="codes" onclick="openTab('codes')">⚖️ Kodekslar</button>
                     <button data-t="quiz" onclick="openTab('quiz')">⚡ Huquqiy Test</button>
@@ -491,6 +492,10 @@
                 <div style="display:flex;align-items:center;gap:8px">
                     <button id="theme-toggle-btn" class="btn btn-gray" onclick="toggleTheme()"
                         style="padding:7px 11px;font-size:15px;border-radius:50%">🌙</button>
+                        <span id="online-badge" style="background:#dcfce7;color:#15803d;padding:5px 10px;border-radius:20px;font-size:12px;font-weight:700;display:inline-flex;align-items:center;gap:5px" title="Hozir saytdagi faol foydalanuvchilar">
+    🟢 <span id="online-count">1</span> onlayn
+</span>
+
                     <button id="top-plus-btn" class="btn btn-gold" onclick="buyPlusModal()"
                         style="padding:6px 12px;font-size:12px;border-radius:20px">💎 PLUS</button>
                     <div class="user-btn" onclick="logoutUser()" title="Chiqish">
@@ -742,6 +747,11 @@
                         <p>Jami foydalanuvchilar</p>
                     </div>
                     <div class="card">
+                        <h2 id="adm-online-cnt" style="color:#16a34a">1</h2>
+                        <p>🟢 Hozir saytda onlayn</p>
+                    </div>
+
+                    <div class="card">
                         <h2 id="adm-tests-cnt" style="color:#10b981">0</h2>
                         <p>Ishlangan testlar</p>
                     </div>
@@ -774,10 +784,11 @@
             </button>
             <button data-t="plus" onclick="openTab('plus')">🌍<small>Reyting</small></button>
         </nav>
-    </div><script src="https://unpkg.com"></script>
-<script>if (!window.supabase) document.write('<scr' + 'ipt src="https://cdn.jsdelivr.' + 'net/npm/@supabase/supabase-js@2"></scr' + 'ipt>');</script>
-<script src="law-data.js"></script>
-<script src="app.js"></script>
+    </div>
+    <script src="https://unpkg.com"></script>
+    <script>if (!window.supabase) document.write('<scr' + 'ipt src="https://cdn.jsdelivr.' + 'net/npm/@supabase/supabase-js@2"></scr' + 'ipt>');</script>
+    <script src="law-data.js"></script>
+    <script src="app.js"></script>
 </body>
 
 </body>

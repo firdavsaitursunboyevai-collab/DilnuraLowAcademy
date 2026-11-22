@@ -327,3 +327,44 @@ if (localStorage.getItem("dh_dark") === "1") { document.body.classList.add("dark
 
 renderLaws();
 checkAuthSession();
+let onlineChannel = null;
+function startOnlineTracker() {
+    if (!window.supabase) return;
+    const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    if (onlineChannel) sb.removeChannel(onlineChannel);
+
+    const cur = JSON.parse(localStorage.getItem("dh_current_user") || '{"name":"Mehmon","login":"guest_' + Math.floor(Math.random()*999) + '"}');
+    onlineChannel = sb.channel('dilnura_online_room', {
+        config: { presence: { key: cur.login + "_" + Math.floor(Math.random()*1000) } }
+    });
+
+    onlineChannel.on('presence', { event: 'sync' }, () => {
+        const state = onlineChannel.presenceState();
+        const activeUsers = [];
+        Object.values(state).forEach(arr => {
+            if (arr && arr) activeUsers.push(arr);
+        });
+
+        const countEl = document.getElementById("online-count");
+        if (countEl) countEl.innerText = activeUsers.length || 1;
+
+        const admCnt = document.getElementById("adm-online-cnt");
+        if (admCnt) admCnt.innerText = activeUsers.length || 1;
+
+        const admList = document.getElementById("adm-online-list");
+        if (admList) {
+            admList.innerHTML = activeUsers.length
+                ? activeUsers.map(u => `<span style="background:#dcfce7;color:#166534;padding:5px 12px;border-radius:20px;font-weight:700">🟢 ${u.name} (${u.login})</span>`).join('')
+                : '<span>Hozircha hech kim yo\'q</span>';
+        }
+    }).subscribe(async (status) => {
+        if (status === 'SUBSCRIBED') {
+            await onlineChannel.track({
+                name: cur.name || "Foydalanuvchi",
+                login: cur.login || "guest"
+            });
+        }
+    });
+}
+
+startOnlineTracker();
