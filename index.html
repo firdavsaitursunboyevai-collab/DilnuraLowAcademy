@@ -1,291 +1,785 @@
 <!DOCTYPE html>
 <html lang="uz">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DilnuraHuquq PRO — O'zbekiston Qonunchiligi Akademiyasi</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://w3.org' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
-<style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,sans-serif}
-body{background:#f1f5f9;color:#0f172a;padding-bottom:75px;transition:.2s}
-.container{max-width:1100px;margin:0 auto;padding:0 16px}
-.hidden{display:none!important}
-header{background:#fff;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-index:100}
-.nav{display:flex;justify-content:space-between;align-items:center;height:66px;gap:10px}
-.logo{font-weight:800;font-size:10px;color:#1e3a8a;cursor:pointer;display:flex;align-items:center;gap:6px}
-.menu{display:flex;gap:5px;flex-wrap:wrap}
-.menu button{border:none;background:none;padding:8px 11px;border-radius:8px;font-weight:600;color:#475569;cursor:pointer;font-size:13px}
-.menu button.active{background:#eff6ff;color:#1d4ed8}
-.user-btn{display:flex;align-items:center;gap:6px;background:#f8fafc;border:1px solid #e2e8f0;padding:6px 12px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer}
-.tab{display:none;padding:24px 0;animation:fade .25s}
-.tab.active{display:block}
-@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
-.hero{background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 55%,#0369a1 100%);color:#fff;padding:34px;border-radius:20px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
-.stats{display:flex;gap:10px}
-.stat{background:rgba(255,255,255,.14);padding:12px 16px;border-radius:14px;text-align:center;min-width:85px}
-.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
-.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
-.card{background:#fff;padding:20px;border-radius:16px;border:1px solid #e2e8f0;box-shadow:0 2px 6px rgba(0,0,0,.03);display:flex;flex-direction:column;justify-content:space-between}
-.card.click{cursor:pointer;transition:.2s}
-.card.click:hover{transform:translateY(-3px);border-color:#2563eb;box-shadow:0 10px 20px rgba(37,99,235,.1)}
-.tag{display:inline-block;background:#eff6ff;color:#1d4ed8;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700;margin-bottom:8px;width:fit-content}
-.law-box{background:#f8fafc;border-left:4px solid #1d4ed8;padding:10px 12px;border-radius:8px;font-size:13px;margin:10px 0;color:#1e293b}
-.btn{padding:10px 16px;border-radius:10px;border:none;font-weight:700;cursor:pointer;font-size:13px;display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:.2s}
-.btn-primary{background:#1d4ed8;color:#fff}
-.btn-gold{background:#f59e0b;color:#fff}
-.btn-green{background:#10b981;color:#fff}
-.btn-red{background:#ef4444;color:#fff}
-.btn-gray{background:#e2e8f0;color:#334155}
-.btn-outline{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe;width:100%;margin-top:12px}
-.top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;gap:10px;flex-wrap:wrap}
-.search,.inp,select{padding:10px 14px;border:1px solid #cbd5e1;border-radius:10px;font-size:14px;outline:none}
-.opt{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid #e2e8f0;border-radius:10px;margin-top:8px;cursor:pointer}
-.opt:hover{background:#eff6ff;border-color:#2563eb}
-table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden}
-th,td{padding:12px;text-align:left;border-bottom:1px solid #e2e8f0;font-size:14px}
-th{background:#f8fafc;color:#475569}
-.auth-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px;background:linear-gradient(135deg,#0f172a,#1e3a8a)}
-.auth-card{background:#fff;padding:30px;border-radius:20px;width:100%;max-width:400px;box-shadow:0 20px 30px rgba(0,0,0,.25)}
-.f-grp{margin-bottom:14px}
-.f-grp label{display:block;font-size:13px;font-weight:600;margin-bottom:5px;color:#334155}
-.f-grp .inp{width:100%}
-.m-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e2e8f0;justify-content:space-around;padding:6px 0;z-index:100}
-.m-nav button{border:none;background:none;font-size:11px;font-weight:600;color:#64748b;display:flex;flex-direction:column;align-items:center}
-.m-nav button.active{color:#1d4ed8}
-@media(max-width:850px){.menu{display:none}.m-nav{display:flex}}
 
-/* 🌙 TUN REJIMI */
-body.dark-mode{background:#0f172a;color:#f8fafc}
-body.dark-mode header,body.dark-mode .m-nav{background:#1e293b;border-color:#334155}
-body.dark-mode .card,body.dark-mode .auth-card{background:#1e293b!important;color:#f8fafc!important;border-color:#334155!important}
-body.dark-mode .law-box,body.dark-mode .opt{background:#0f172a;color:#e2e8f0;border-color:#334155}
-body.dark-mode .inp,body.dark-mode .search,body.dark-mode select{background:#0f172a;color:#fff;border-color:#334155}
-body.dark-mode table{background:#1e293b;color:#f8fafc}
-body.dark-mode th{background:#0f172a;color:#94a3b8;border-color:#334155}
-body.dark-mode td{border-color:#334155}
-body.dark-mode .menu button{color:#cbd5e1}
-body.dark-mode .menu button.active{background:#1e3a8a;color:#93c5fd}
-body.dark-mode .user-btn{background:#334155;color:#f8fafc;border-color:#475569}
-</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DilnuraHuquq PRO — O'zbekiston Qonunchiligi Akademiyasi</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://w3.org' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: system-ui, -apple-system, sans-serif
+        }
+
+        body {
+            background: #f1f5f9;
+            color: #0f172a;
+            padding-bottom: 75px;
+            transition: .2s
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 16px
+        }
+
+        .hidden {
+            display: none !important
+        }
+
+        header {
+            background: #fff;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 100
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 66px;
+            gap: 10px
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 10px;
+            color: #1e3a8a;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .menu {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap
+        }
+
+        .menu button {
+            border: none;
+            background: none;
+            padding: 8px 11px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #475569;
+            cursor: pointer;
+            font-size: 13px
+        }
+
+        .menu button.active {
+            background: #eff6ff;
+            color: #1d4ed8
+        }
+
+        .user-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer
+        }
+
+        .tab {
+            display: none;
+            padding: 24px 0;
+            animation: fade .25s
+        }
+
+        .tab.active {
+            display: block
+        }
+
+        @keyframes fade {
+            from {
+                opacity: 0;
+                transform: translateY(5px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #0369a1 100%);
+            color: #fff;
+            padding: 34px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px
+        }
+
+        .stats {
+            display: flex;
+            gap: 10px
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, .14);
+            padding: 12px 16px;
+            border-radius: 14px;
+            text-align: center;
+            min-width: 85px
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 16px
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 16px
+        }
+
+        .card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .03);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between
+        }
+
+        .card.click {
+            cursor: pointer;
+            transition: .2s
+        }
+
+        .card.click:hover {
+            transform: translateY(-3px);
+            border-color: #2563eb;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, .1)
+        }
+
+        .tag {
+            display: inline-block;
+            background: #eff6ff;
+            color: #1d4ed8;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            width: fit-content
+        }
+
+        .law-box {
+            background: #f8fafc;
+            border-left: 4px solid #1d4ed8;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin: 10px 0;
+            color: #1e293b
+        }
+
+        .btn {
+            padding: 10px 16px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 13px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: .2s
+        }
+
+        .btn-primary {
+            background: #1d4ed8;
+            color: #fff
+        }
+
+        .btn-gold {
+            background: #f59e0b;
+            color: #fff
+        }
+
+        .btn-green {
+            background: #10b981;
+            color: #fff
+        }
+
+        .btn-red {
+            background: #ef4444;
+            color: #fff
+        }
+
+        .btn-gray {
+            background: #e2e8f0;
+            color: #334155
+        }
+
+        .btn-outline {
+            background: #eff6ff;
+            color: #1d4ed8;
+            border: 1px solid #bfdbfe;
+            width: 100%;
+            margin-top: 12px
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .search,
+        .inp,
+        select {
+            padding: 10px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 14px;
+            outline: none
+        }
+
+        .opt {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            margin-top: 8px;
+            cursor: pointer
+        }
+
+        .opt:hover {
+            background: #eff6ff;
+            border-color: #2563eb
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 14px
+        }
+
+        th {
+            background: #f8fafc;
+            color: #475569
+        }
+
+        .auth-wrap {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            background: linear-gradient(135deg, #0f172a, #1e3a8a)
+        }
+
+        .auth-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, .25)
+        }
+
+        .f-grp {
+            margin-bottom: 14px
+        }
+
+        .f-grp label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #334155
+        }
+
+        .f-grp .inp {
+            width: 100%
+        }
+
+        .m-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border-top: 1px solid #e2e8f0;
+            justify-content: space-around;
+            padding: 6px 0;
+            z-index: 100
+        }
+
+        .m-nav button {
+            border: none;
+            background: none;
+            font-size: 11px;
+            font-weight: 600;
+            color: #64748b;
+            display: flex;
+            flex-direction: column;
+            align-items: center
+        }
+
+        .m-nav button.active {
+            color: #1d4ed8
+        }
+
+        @media(max-width:850px) {
+            .menu {
+                display: none
+            }
+
+            .m-nav {
+                display: flex
+            }
+        }
+
+        /* 🌙 TUN REJIMI */
+        body.dark-mode {
+            background: #0f172a;
+            color: #f8fafc
+        }
+
+        body.dark-mode header,
+        body.dark-mode .m-nav {
+            background: #1e293b;
+            border-color: #334155
+        }
+
+        body.dark-mode .card,
+        body.dark-mode .auth-card {
+            background: #1e293b !important;
+            color: #f8fafc !important;
+            border-color: #334155 !important
+        }
+
+        body.dark-mode .law-box,
+        body.dark-mode .opt {
+            background: #0f172a;
+            color: #e2e8f0;
+            border-color: #334155
+        }
+
+        body.dark-mode .inp,
+        body.dark-mode .search,
+        body.dark-mode select {
+            background: #0f172a;
+            color: #fff;
+            border-color: #334155
+        }
+
+        body.dark-mode table {
+            background: #1e293b;
+            color: #f8fafc
+        }
+
+        body.dark-mode th {
+            background: #0f172a;
+            color: #94a3b8;
+            border-color: #334155
+        }
+
+        body.dark-mode td {
+            border-color: #334155
+        }
+
+        body.dark-mode .menu button {
+            color: #cbd5e1
+        }
+
+        body.dark-mode .menu button.active {
+            background: #1e3a8a;
+            color: #93c5fd
+        }
+
+        body.dark-mode .user-btn {
+            background: #334155;
+            color: #f8fafc;
+            border-color: #475569
+        }
+    </style>
 </head>
+
 <body>
 
-<!-- LOGIN / RO'YXATDAN O'TISH -->
-<div id="auth-screen" class="auth-wrap">
-    <div class="auth-card">
-        <div style="text-align:center;margin-bottom:20px">
-            <div style="font-size:40px">⚖️</div>
-            <h2 id="auth-title" style="margin-top:6px;color:#0f172a">Tizimga kirish</h2>
-            <p style="color:#64748b;font-size:13px;margin-top:4px">DilnuraLowAcademy PRO — O'zbekiston Qonunchiligi</p>
+    <!-- LOGIN / RO'YXATDAN O'TISH -->
+    <div id="auth-screen" class="auth-wrap">
+        <div class="auth-card">
+            <div style="text-align:center;margin-bottom:20px">
+                <div style="font-size:40px">⚖️</div>
+                <h2 id="auth-title" style="margin-top:6px;color:#0f172a">Tizimga kirish</h2>
+                <p style="color:#64748b;font-size:13px;margin-top:4px">DilnuraLowAcademy PRO — O'zbekiston Qonunchiligi
+                </p>
+            </div>
+            <form onsubmit="handleAuth(event)">
+                <div id="auth-name-group" class="f-grp hidden">
+                    <label>Ism va Familiyangiz:</label>
+                    <input id="auth-name" class="inp" type="text" placeholder="Masalan: Dilnura Karimova">
+                </div>
+                <div class="f-grp">
+                    <label>Login:</label>
+                    <input id="auth-login" class="inp" type="text" placeholder="Loginingizni kiriting" required>
+                </div>
+                <div class="f-grp">
+                    <label>Parol:</label>
+                    <input id="auth-pass" class="inp" type="password" placeholder="Parolingizni kiriting" required>
+                </div>
+                <button id="auth-submit-btn" type="submit" class="btn btn-primary"
+                    style="width:100%;padding:13px;margin-top:6px">Kirish</button>
+            </form>
+            <p id="auth-switch-text" style="text-align:center;font-size:13px;margin-top:16px;color:#475569">
+                Akkauntingiz yo'qmi? <b style="color:#1d4ed8;cursor:pointer" onclick="toggleAuthMode()">Ro'yxatdan
+                    o'ting</b>
+            </p>
         </div>
-        <form onsubmit="handleAuth(event)">
-            <div id="auth-name-group" class="f-grp hidden">
-                <label>Ism va Familiyangiz:</label>
-                <input id="auth-name" class="inp" type="text" placeholder="Masalan: Dilnura Karimova">
-            </div>
-            <div class="f-grp">
-                <label>Login:</label>
-                <input id="auth-login" class="inp" type="text" placeholder="Loginingizni kiriting" required>
-            </div>
-            <div class="f-grp">
-                <label>Parol:</label>
-                <input id="auth-pass" class="inp" type="password" placeholder="Parolingizni kiriting" required>
-            </div>
-            <button id="auth-submit-btn" type="submit" class="btn btn-primary" style="width:100%;padding:13px;margin-top:6px">Kirish</button>
-        </form>
-        <p id="auth-switch-text" style="text-align:center;font-size:13px;margin-top:16px;color:#475569">
-            Akkauntingiz yo'qmi? <b style="color:#1d4ed8;cursor:pointer" onclick="toggleAuthMode()">Ro'yxatdan o'ting</b>
-        </p>
     </div>
-</div>
 
-<!-- ASOSIY PLATFORMA -->
-<div id="app-screen" class="hidden">
-    <header>
-        <div class="container nav">
-            <div class="logo" onclick="openTab('home')">⚖️ DilnuraLowAcademy PRO</div>
-            <div class="menu">
-                <button class="active" data-t="home" onclick="openTab('home')">🏠 Asosiy</button>
-                <button data-t="const" onclick="openTab('const')">🇺🇿 Konstitutsiya</button>
-                <button data-t="codes" onclick="openTab('codes')">⚖️ Kodekslar</button>
-                <button data-t="quiz" onclick="openTab('quiz')">⚡ Huquqiy Test</button>
-                <button data-t="plus" onclick="openTab('plus')" style="color:#d97706">🌍 Reyting & PLUS</button>
-                <button data-t="dict" onclick="openTab('dict')" style="color:#7e22ce">📖 Lug'at 💎</button>
-                <button data-t="cert" onclick="openTab('cert')" style="color:#059669">🎓 Sertifikat 💎</button>
-                <button class="admin-only hidden" data-t="admin" onclick="openTab('admin')" style="color:#dc2626">👑 Admin</button>
-            </div>
-            <div style="display:flex;align-items:center;gap:8px">
-                <button id="theme-toggle-btn" class="btn btn-gray" onclick="toggleTheme()" style="padding:7px 11px;font-size:15px;border-radius:50%">🌙</button>
-                <button id="top-plus-btn" class="btn btn-gold" onclick="buyPlusModal()" style="padding:6px 12px;font-size:12px;border-radius:20px">💎 PLUS</button>
-                <div class="user-btn" onclick="logoutUser()" title="Chiqish">
-                    <span>👤 <span id="uname">Foydalanuvchi</span></span>
-                    <span style="color:#ef4444;font-size:11px">[Chiqish]</span>
+    <!-- ASOSIY PLATFORMA -->
+    <div id="app-screen" class="hidden">
+        <header>
+            <div class="container nav">
+                <div class="logo" onclick="openTab('home')">⚖️ DilnuraLowAcademy PRO</div>
+                <div class="menu">
+                    <button class="active" data-t="home" onclick="openTab('home')">🏠 Asosiy</button>
+                    <button data-t="const" onclick="openTab('const')">🇺🇿 Konstitutsiya</button>
+                    <button data-t="codes" onclick="openTab('codes')">⚖️ Kodekslar</button>
+                    <button data-t="quiz" onclick="openTab('quiz')">⚡ Huquqiy Test</button>
+                    <button data-t="plus" onclick="openTab('plus')" style="color:#d97706">🌍 Reyting & PLUS</button>
+                    <button data-t="dict" onclick="openTab('dict')" style="color:#7e22ce">📖 Lug'at 💎</button>
+                    <button data-t="cert" onclick="openTab('cert')" style="color:#059669">🎓 Sertifikat 💎</button>
+                    <button class="admin-only hidden" data-t="admin" onclick="openTab('admin')" style="color:#dc2626">👑
+                        Admin</button>
+                </div>
+                <div style="display:flex;align-items:center;gap:8px">
+                    <button id="theme-toggle-btn" class="btn btn-gray" onclick="toggleTheme()"
+                        style="padding:7px 11px;font-size:15px;border-radius:50%">🌙</button>
+                    <button id="top-plus-btn" class="btn btn-gold" onclick="buyPlusModal()"
+                        style="padding:6px 12px;font-size:12px;border-radius:20px">💎 PLUS</button>
+                    <div class="user-btn" onclick="logoutUser()" title="Chiqish">
+                        <span>👤 <span id="uname">Foydalanuvchi</span></span>
+                        <span style="color:#ef4444;font-size:11px">[Chiqish]</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <div class="container">
-        <!-- 🏠 ASOSIY -->
-        <section id="home" class="tab active">
-                     <div class="hero" style="background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 55%,#0369a1 100%);padding:36px">
-                <div style="flex:1;min-width:280px">
-                    <span style="background:rgba(245,158,11,.22);color:#fcd34d;border:1px solid rgba(245,158,11,.4);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700">⚖️ MUALLIFLIK HUQUQIY PORTALI</span>
-                    <h1 style="font-size:30px;margin:14px 0;line-height:1.25">DilnuraLowAcademy PRO — O'zbekiston Qonunchiligi Akademiyasi</h1>
-                    <p style="color:#dbeafe;margin-bottom:20px;font-size:15px;line-height:1.6">Yangi tahrirdagi Konstitutsiya, barcha Kodekslar sharhi, yuridik maslahatlar va huquqiy bilimlar sinovi bir platformada.</p>
-                    
-                    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
-                        <button class="btn btn-gold" style="padding:13px 22px;font-size:15px" onclick="openTab('quiz')">⚡ Huquqiy Test Boshlash</button>
-                        <button class="btn" style="background:rgba(255,255,255,.18);color:#fff;padding:13px 20px" onclick="openTab('const')">🇺🇿 Konstitutsiyani O'qish</button>
-                    </div>
+        <div class="container">
+            <!-- 🏠 ASOSIY -->
+            <section id="home" class="tab active">
+                <div class="hero"
+                    style="background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 55%,#0369a1 100%);padding:36px">
+                    <div style="flex:1;min-width:280px">
+                        <span
+                            style="background:rgba(245,158,11,.22);color:#fcd34d;border:1px solid rgba(245,158,11,.4);padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700">⚖️
+                            MUALLIFLIK HUQUQIY PORTALI</span>
+                        <h1 style="font-size:30px;margin:14px 0;line-height:1.25">DilnuraLowAcademy PRO — O'zbekiston
+                            Qonunchiligi Akademiyasi</h1>
+                        <p style="color:#dbeafe;margin-bottom:20px;font-size:15px;line-height:1.6">Yangi tahrirdagi
+                            Konstitutsiya, barcha Kodekslar sharhi, yuridik maslahatlar va huquqiy bilimlar sinovi bir
+                            platformada.</p>
 
-                    <div class="stats" style="flex-wrap:wrap">
-                        <div class="stat"><h3 id="st-count">0</h3><small>Testlarim</small></div>
-                        <div class="stat"><h3 id="st-avg">0%</h3><small>O'rtacha</small></div>
-                        <div class="stat" style="background:rgba(16,185,129,.22);border:1px solid rgba(16,185,129,.4)">
-                            <div style="font-size:10px;color:#a7f3d0;font-weight:700">MAQOMINGIZ</div>
-                            <div id="user-rank-title" style="font-size:13px;font-weight:800;color:#fff;margin-top:2px">🌱 Yosh Huquqshunos</div>
+                        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px">
+                            <button class="btn btn-gold" style="padding:13px 22px;font-size:15px"
+                                onclick="openTab('quiz')">⚡ Huquqiy Test Boshlash</button>
+                            <button class="btn" style="background:rgba(255,255,255,.18);color:#fff;padding:13px 20px"
+                                onclick="openTab('const')">🇺🇿 Konstitutsiyani O'qish</button>
+                        </div>
+
+                        <div class="stats" style="flex-wrap:wrap">
+                            <div class="stat">
+                                <h3 id="st-count">0</h3><small>Testlarim</small>
+                            </div>
+                            <div class="stat">
+                                <h3 id="st-avg">0%</h3><small>O'rtacha</small>
+                            </div>
+                            <div class="stat"
+                                style="background:rgba(16,185,129,.22);border:1px solid rgba(16,185,129,.4)">
+                                <div style="font-size:10px;color:#a7f3d0;font-weight:700">MAQOMINGIZ</div>
+                                <div id="user-rank-title"
+                                    style="font-size:13px;font-weight:800;color:#fff;margin-top:2px">🌱 Yosh Huquqshunos
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    <!-- 👩‍⚖️ MUALLIF (ONANGIZNING) KATTA PORTRET RASMI -->
+                    <div
+                        style="text-align:center;background:rgba(255,255,255,.08);padding:18px;border-radius:22px;border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(6px)">
+                        <img src="dilnura.jpg" alt="Dilnura" onerror="this.src='https://flaticon.com'"
+                            style="width:210px;height:210px;border-radius:20px;object-fit:cover;border:4px solid #f59e0b;box-shadow:0 12px 25px rgba(0,0,0,.35);display:block;margin:0 auto">
+                        <h3 style="margin-top:12px;font-size:18px;color:#fff">Dilnura Xolmetova</h3>
+                        <span
+                            style="display:inline-block;margin-top:4px;background:#f59e0b;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:700">⚖️
+                            Platforma Asoschisi</span>
+                    </div>
                 </div>
 
-                <!-- 👩‍⚖️ MUALLIF (ONANGIZNING) KATTA PORTRET RASMI -->
-                <div style="text-align:center;background:rgba(255,255,255,.08);padding:18px;border-radius:22px;border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(6px)">
-                    <img  src="dilnura.jpg" alt="Dilnura" onerror="this.src='https://flaticon.com'" 
-                         style="width:210px;height:210px;border-radius:20px;object-fit:cover;border:4px solid #f59e0b;box-shadow:0 12px 25px rgba(0,0,0,.35);display:block;margin:0 auto">
-                    <h3 style="margin-top:12px;font-size:18px;color:#fff">Dilnura Xolmetova</h3>
-                    <span style="display:inline-block;margin-top:4px;background:#f59e0b;color:#fff;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:700">⚖️ Platforma Asoschisi</span>
+
+                <div class="grid-2" style="margin-bottom:24px">
+                    <div class="card"
+                        style="border-left:5px solid #1d4ed8;background:linear-gradient(90deg,#eff6ff,#ffffff)">
+                        <span class="tag">🇺🇿 KUN MODDASI (KONSTITUTSIYA)</span>
+                        <h3 id="daily-law-title" style="font-size:18px;color:#1e3a8a;margin:4px 0">20-modda. Inson
+                            huquqlari</h3>
+                        <p id="daily-law-text" style="font-size:14px;color:#334155">O'zbekiston Respublikasida insonning
+                            huquq va erkinliklari xalqaro huquqning umume'tirof etilgan normalariga binoan e'tirof
+                            etiladi va kafolatlanadi.</p>
+                    </div>
+                    <div class="card"
+                        style="border-left:5px solid #059669;background:linear-gradient(90deg,#ecfdf5,#ffffff)">
+                        <span class="tag" style="background:#d1fae5;color:#065f46">📖 KUN YURIDIK ATAMASI</span>
+                        <h3 id="daily-term-title" style="font-size:18px;color:#064e3b;margin:4px 0">Aybsizlik
+                            prezumpsiyasi</h3>
+                        <p id="daily-term-text" style="font-size:14px;color:#334155">Jinoyat sodir etganlikda
+                            ayblanayotgan shaxs uning aybi qonunda nazarda tutilgan tartibda oshkora sud muhokamasi
+                            yo'li bilan isbotlanmaguncha aybsiz hisoblanadi.</p>
+                    </div>
                 </div>
-            </div>
 
-
-            <div class="grid-2" style="margin-bottom:24px">
-                <div class="card" style="border-left:5px solid #1d4ed8;background:linear-gradient(90deg,#eff6ff,#ffffff)">
-                    <span class="tag">🇺🇿 KUN MODDASI (KONSTITUTSIYA)</span>
-                    <h3 id="daily-law-title" style="font-size:18px;color:#1e3a8a;margin:4px 0">20-modda. Inson huquqlari</h3>
-                    <p id="daily-law-text" style="font-size:14px;color:#334155">O'zbekiston Respublikasida insonning huquq va erkinliklari xalqaro huquqning umume'tirof etilgan normalariga binoan e'tirof etiladi va kafolatlanadi.</p>
+                <div class="grid-3">
+                    <div class="card click" onclick="openTab('const')">
+                        <div>
+                            <div style="font-size:28px;margin-bottom:8px">🇺🇿</div>
+                            <h3>O'zbekiston Konstitutsiyasi</h3>
+                            <p style="color:#64748b;margin:8px 0;font-size:14px">Asosiy Qonun moddalari, fuqarolarning
+                                huquq va burchlari sharhi.</p>
+                        </div>
+                        <b style="color:#1d4ed8">Moddalarni o'qish →</b>
+                    </div>
+                    <div class="card click" onclick="openTab('codes')">
+                        <div>
+                            <div style="font-size:28px;margin-bottom:8px">⚖️</div>
+                            <h3>O'zbekiston Kodekslari</h3>
+                            <p style="color:#64748b;margin:8px 0;font-size:14px">Mehnat, Fuqarolik, Jinoyat, Ma'muriy,
+                                Oila va Soliq kodekslari.</p>
+                        </div>
+                        <b style="color:#1d4ed8">Kodekslarni ko'rish →</b>
+                    </div>
+                    <div class="card click" onclick="openTab('quiz')">
+                        <div>
+                            <div style="font-size:28px;margin-bottom:8px">⚡</div>
+                            <h3>Huquqiy Testlar</h3>
+                            <p style="color:#64748b;margin:8px 0;font-size:14px">Qonunchilik bo'yicha bilimingizni
+                                sinang va reytingda ko'tariling.</p>
+                        </div>
+                        <b style="color:#1d4ed8">Test yechish →</b>
+                    </div>
                 </div>
-                <div class="card" style="border-left:5px solid #059669;background:linear-gradient(90deg,#ecfdf5,#ffffff)">
-                    <span class="tag" style="background:#d1fae5;color:#065f46">📖 KUN YURIDIK ATAMASI</span>
-                    <h3 id="daily-term-title" style="font-size:18px;color:#064e3b;margin:4px 0">Aybsizlik prezumpsiyasi</h3>
-                    <p id="daily-term-text" style="font-size:14px;color:#334155">Jinoyat sodir etganlikda ayblanayotgan shaxs uning aybi qonunda nazarda tutilgan tartibda oshkora sud muhokamasi yo'li bilan isbotlanmaguncha aybsiz hisoblanadi.</p>
+            </section>
+
+            <section id="const" class="tab">
+                <div class="top-bar">
+                    <h2>🇺🇿 O'zbekiston Respublikasi Konstitutsiyasi</h2><input class="search" id="s-const"
+                        placeholder="🔍 Modda yoki mavzu qidirish..." oninput="filterCards('const')">
                 </div>
-            </div>
+                <div id="list-const" class="grid-2"></div>
+            </section>
 
-            <div class="grid-3">
-                <div class="card click" onclick="openTab('const')">
-                    <div><div style="font-size:28px;margin-bottom:8px">🇺🇿</div><h3>O'zbekiston Konstitutsiyasi</h3><p style="color:#64748b;margin:8px 0;font-size:14px">Asosiy Qonun moddalari, fuqarolarning huquq va burchlari sharhi.</p></div>
-                    <b style="color:#1d4ed8">Moddalarni o'qish →</b>
+            <section id="codes" class="tab">
+                <div class="top-bar">
+                    <h2>⚖️ O'zbekiston Respublikasi Kodekslari</h2><input class="search" id="s-codes"
+                        placeholder="🔍 Kodeks qidirish..." oninput="filterCards('codes')">
                 </div>
-                <div class="card click" onclick="openTab('codes')">
-                    <div><div style="font-size:28px;margin-bottom:8px">⚖️</div><h3>O'zbekiston Kodekslari</h3><p style="color:#64748b;margin:8px 0;font-size:14px">Mehnat, Fuqarolik, Jinoyat, Ma'muriy, Oila va Soliq kodekslari.</p></div>
-                    <b style="color:#1d4ed8">Kodekslarni ko'rish →</b>
+                <div id="list-codes" class="grid-2"></div>
+            </section>
+
+            <section id="lesson-detail" class="tab">
+                <div id="lesson-detail-content"></div>
+            </section>
+
+            <section id="quiz" class="tab">
+                <div id="q-setup" class="card" style="max-width:500px;margin:0 auto;text-align:center">
+                    <h2>⚡ Huquqiy Bilimlar Testi</h2>
+                    <p style="color:#64748b;margin:8px 0 16px">Yo'nalish va savollar sonini tanlang:</p>
+                    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:16px">
+                        <select id="q-cat">
+                            <option value="all">🌟 Barcha qonunlar (Aralash)</option>
+                            <option value="const">🇺🇿 Konstitutsiya</option>
+                            <option value="codes">⚖️ Kodekslar (Mehnat, Jinoyat, Oila...)</option>
+                        </select>
+                        <select id="q-num">
+                            <option value="5" selected>5 ta savol</option>
+                            <option value="10">10 ta savol</option>
+                            <option value="20">20 ta savol (💎 PLUS)</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" style="width:100%" onclick="startQuiz()">🎲 Testni Boshlash</button>
                 </div>
-                <div class="card click" onclick="openTab('quiz')">
-                    <div><div style="font-size:28px;margin-bottom:8px">⚡</div><h3>Huquqiy Testlar</h3><p style="color:#64748b;margin:8px 0;font-size:14px">Qonunchilik bo'yicha bilimingizni sinang va reytingda ko'tariling.</p></div>
-                    <b style="color:#1d4ed8">Test yechish →</b>
+                <div id="q-box" class="hidden">
+                    <div class="top-bar"><b>Huquqiy Test Savollari</b><button class="btn btn-red"
+                            onclick="cancelQuiz()">Bekor qilish</button></div>
+                    <div id="q-items"></div>
+                    <button class="btn btn-green" style="width:100%;margin-top:16px;padding:14px"
+                        onclick="finishQuiz()">✅ Testni Yakunlash</button>
                 </div>
-            </div>
-        </section>
+                <div id="q-res" class="hidden"></div>
+            </section>
 
-        <section id="const" class="tab">
-            <div class="top-bar"><h2>🇺🇿 O'zbekiston Respublikasi Konstitutsiyasi</h2><input class="search" id="s-const" placeholder="🔍 Modda yoki mavzu qidirish..." oninput="filterCards('const')"></div>
-            <div id="list-const" class="grid-2"></div>
-        </section>
-
-        <section id="codes" class="tab">
-            <div class="top-bar"><h2>⚖️ O'zbekiston Respublikasi Kodekslari</h2><input class="search" id="s-codes" placeholder="🔍 Kodeks qidirish..." oninput="filterCards('codes')"></div>
-            <div id="list-codes" class="grid-2"></div>
-        </section>
-
-        <section id="lesson-detail" class="tab"><div id="lesson-detail-content"></div></section>
-
-        <section id="quiz" class="tab">
-            <div id="q-setup" class="card" style="max-width:500px;margin:0 auto;text-align:center">
-                <h2>⚡ Huquqiy Bilimlar Testi</h2>
-                <p style="color:#64748b;margin:8px 0 16px">Yo'nalish va savollar sonini tanlang:</p>
-                <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:16px">
-                    <select id="q-cat">
-                        <option value="all">🌟 Barcha qonunlar (Aralash)</option>
-                        <option value="const">🇺🇿 Konstitutsiya</option>
-                        <option value="codes">⚖️ Kodekslar (Mehnat, Jinoyat, Oila...)</option>
-                    </select>
-                    <select id="q-num">
-                        <option value="5" selected>5 ta savol</option>
-                        <option value="10">10 ta savol</option>
-                        <option value="20">20 ta savol (💎 PLUS)</option>
-                    </select>
+            <section id="plus" class="tab">
+                <div class="top-bar">
+                    <h2>🌍 Huquqshunoslar Reytingi va 💎 PLUS Tarif</h2>
                 </div>
-                <button class="btn btn-primary" style="width:100%" onclick="startQuiz()">🎲 Testni Boshlash</button>
-            </div>
-            <div id="q-box" class="hidden">
-                <div class="top-bar"><b>Huquqiy Test Savollari</b><button class="btn btn-red" onclick="cancelQuiz()">Bekor qilish</button></div>
-                <div id="q-items"></div>
-                <button class="btn btn-green" style="width:100%;margin-top:16px;padding:14px" onclick="finishQuiz()">✅ Testni Yakunlash</button>
-            </div>
-            <div id="q-res" class="hidden"></div>
-        </section>
-
-        <section id="plus" class="tab">
-            <div class="top-bar"><h2>🌍 Huquqshunoslar Reytingi va 💎 PLUS Tarif</h2></div>
-            <div class="card" style="margin-bottom:24px">
-                <h3 style="margin-bottom:12px">🏆 Eng ko'p to'g'ri javob topganlar (Top Reyting)</h3>
-                <div style="overflow-x:auto">
-                    <table><thead><tr><th>O'rin</th><th>Foydalanuvchi</th><th>To'g'ri javoblar</th><th>Testlar</th><th>O'rtacha</th></tr></thead><tbody id="leaderboard-body"></tbody></table>
+                <div class="card" style="margin-bottom:24px">
+                    <h3 style="margin-bottom:12px">🏆 Eng ko'p to'g'ri javob topganlar (Top Reyting)</h3>
+                    <div style="overflow-x:auto">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>O'rin</th>
+                                    <th>Foydalanuvchi</th>
+                                    <th>To'g'ri javoblar</th>
+                                    <th>Testlar</th>
+                                    <th>O'rtacha</th>
+                                </tr>
+                            </thead>
+                            <tbody id="leaderboard-body"></tbody>
+                        </table>
+                    </div>
                 </div>
-            </div>
-            <div class="grid-2">
-                <div class="card"><span class="tag">🆓 ODDIY TARIF</span><h2>0 so'm</h2><p style="color:#64748b;margin:10px 0">✅ Konstitutsiya, Kodekslar sharhi va Reyting jadvali ochiq.</p><button class="btn btn-gray" disabled>Joriy bepul tarif</button></div>
-                <div class="card" style="border:2px solid #f59e0b;background:#fffbeb"><span class="tag" style="background:#fef3c7;color:#b45309">💎 PLUS TARIF</span><h2 style="color:#b45309">29 000 so'm</h2><p style="color:#334155;margin:10px 0">✅ <b>📖 Yuridik Atamalar Lug'ati</b>, <b>🎓 Rasmiy Huquqiy Sertifikat</b> va katta testlar.</p><button id="buy-plus-btn" class="btn btn-gold" onclick="buyPlusModal()">💎 Telegram orqali PLUS olish</button></div>
-            </div>
-        </section>
-
-        <section id="dict" class="tab">
-            <div class="top-bar"><h2>📖 Yuridik Atamalar Lug'ati 💎</h2><input class="search" id="s-dict" placeholder="🔍 Atama qidirish..." oninput="filterDict()"></div>
-            <div id="dict-locked" class="card" style="text-align:center;padding:40px"><div style="font-size:40px">🔒</div><h3>Yuridik lug'at faqat 💎 PLUS tarifida ochiq!</h3><button class="btn btn-gold" style="margin-top:12px" onclick="buyPlusModal()">💎 PLUS Sotib Olish</button></div>
-            <div id="dict-open" class="hidden"><div id="dict-list" class="grid-3"></div></div>
-        </section>
-
-        <section id="cert" class="tab">
-            <div class="top-bar"><h2>🎓 Huquqiy Savodxonlik Sertifikati 💎</h2></div>
-            <div id="cert-locked" class="card" style="text-align:center;padding:40px"><div style="font-size:40px">🎓</div><h3>Sertifikat imtihoni faqat 💎 PLUS tarifida ochiq!</h3><button class="btn btn-gold" style="margin-top:12px" onclick="buyPlusModal()">💎 PLUS Sotib Olish</button></div>
-            <div id="cert-open" class="hidden">
-                <div id="cert-intro" class="card" style="max-width:520px;margin:0 auto;text-align:center">
-                    <h3>🏛️ Yakuniy Huquqiy Imtihon</h3>
-                    <p style="color:#64748b;margin:10px 0 18px">15 ta savoldan kamida <b>80% (12 ta to'g'ri)</b> to'plang va shaxsiy Sertifikatga ega bo'ling!</p>
-                    <button class="btn btn-primary" style="width:100%" onclick="startCertExam()">🚀 Imtihonni Boshlash</button>
+                <div class="grid-2">
+                    <div class="card"><span class="tag">🆓 ODDIY TARIF</span>
+                        <h2>0 so'm</h2>
+                        <p style="color:#64748b;margin:10px 0">✅ Konstitutsiya, Kodekslar sharhi va Reyting jadvali
+                            ochiq.</p><button class="btn btn-gray" disabled>Joriy bepul tarif</button>
+                    </div>
+                    <div class="card" style="border:2px solid #f59e0b;background:#fffbeb"><span class="tag"
+                            style="background:#fef3c7;color:#b45309">💎 PLUS TARIF</span>
+                        <h2 style="color:#b45309">29 000 so'm</h2>
+                        <p style="color:#334155;margin:10px 0">✅ <b>📖 Yuridik Atamalar Lug'ati</b>, <b>🎓 Rasmiy
+                                Huquqiy Sertifikat</b> va katta testlar.</p><button id="buy-plus-btn"
+                            class="btn btn-gold" onclick="buyPlusModal()">💎 Telegram orqali PLUS olish</button>
+                    </div>
                 </div>
-                <div id="cert-exam-box" class="hidden"><div id="cert-items"></div><button class="btn btn-green" style="width:100%;margin-top:14px;padding:14px" onclick="finishCertExam()">✅ Imtihonni Yakunlash</button></div>
-                <div id="cert-result-box" class="hidden"></div>
-            </div>
-        </section>
+            </section>
 
-        <section id="admin" class="tab">
-            <div class="top-bar"><h2>👑 DilnuraHuquq Admin Paneli</h2><button class="btn btn-primary" onclick="loadAdminPanel()">🔄 Yangilash</button></div>
-            <div class="grid-3" style="margin-bottom:20px">
-                <div class="card"><h2 id="adm-users-cnt" style="color:#1d4ed8">0</h2><p>Jami foydalanuvchilar</p></div>
-                <div class="card"><h2 id="adm-tests-cnt" style="color:#10b981">0</h2><p>Ishlangan testlar</p></div>
-            </div>
-            <div class="card" style="overflow-x:auto">
-                <h3 style="margin-bottom:10px">👥 Foydalanuvchilar va PLUS Boshqaruvi</h3>
-                <table><thead><tr><th>#</th><th>Ism</th><th>Login</th><th>Tarif</th></tr></thead><tbody id="adm-users-body"></tbody></table>
-            </div>
-        </section>
+            <section id="dict" class="tab">
+                <div class="top-bar">
+                    <h2>📖 Yuridik Atamalar Lug'ati 💎</h2><input class="search" id="s-dict"
+                        placeholder="🔍 Atama qidirish..." oninput="filterDict()">
+                </div>
+                <div id="dict-locked" class="card" style="text-align:center;padding:40px">
+                    <div style="font-size:40px">🔒</div>
+                    <h3>Yuridik lug'at faqat 💎 PLUS tarifida ochiq!</h3><button class="btn btn-gold"
+                        style="margin-top:12px" onclick="buyPlusModal()">💎 PLUS Sotib Olish</button>
+                </div>
+                <div id="dict-open" class="hidden">
+                    <div id="dict-list" class="grid-3"></div>
+                </div>
+            </section>
+
+            <section id="cert" class="tab">
+                <div class="top-bar">
+                    <h2>🎓 Huquqiy Savodxonlik Sertifikati 💎</h2>
+                </div>
+                <div id="cert-locked" class="card" style="text-align:center;padding:40px">
+                    <div style="font-size:40px">🎓</div>
+                    <h3>Sertifikat imtihoni faqat 💎 PLUS tarifida ochiq!</h3><button class="btn btn-gold"
+                        style="margin-top:12px" onclick="buyPlusModal()">💎 PLUS Sotib Olish</button>
+                </div>
+                <div id="cert-open" class="hidden">
+                    <div id="cert-intro" class="card" style="max-width:520px;margin:0 auto;text-align:center">
+                        <h3>🏛️ Yakuniy Huquqiy Imtihon</h3>
+                        <p style="color:#64748b;margin:10px 0 18px">15 ta savoldan kamida <b>80% (12 ta to'g'ri)</b>
+                            to'plang va shaxsiy Sertifikatga ega bo'ling!</p>
+                        <button class="btn btn-primary" style="width:100%" onclick="startCertExam()">🚀 Imtihonni
+                            Boshlash</button>
+                    </div>
+                    <div id="cert-exam-box" class="hidden">
+                        <div id="cert-items"></div><button class="btn btn-green"
+                            style="width:100%;margin-top:14px;padding:14px" onclick="finishCertExam()">✅ Imtihonni
+                            Yakunlash</button>
+                    </div>
+                    <div id="cert-result-box" class="hidden"></div>
+                </div>
+            </section>
+
+            <section id="admin" class="tab">
+                <div class="top-bar">
+                    <h2>👑 DilnuraHuquq Admin Paneli</h2><button class="btn btn-primary" onclick="loadAdminPanel()">🔄
+                        Yangilash</button>
+                </div>
+                <div class="grid-3" style="margin-bottom:20px">
+                    <div class="card">
+                        <h2 id="adm-users-cnt" style="color:#1d4ed8">0</h2>
+                        <p>Jami foydalanuvchilar</p>
+                    </div>
+                    <div class="card">
+                        <h2 id="adm-tests-cnt" style="color:#10b981">0</h2>
+                        <p>Ishlangan testlar</p>
+                    </div>
+                </div>
+                <div class="card" style="overflow-x:auto">
+                    <h3 style="margin-bottom:10px">👥 Foydalanuvchilar va PLUS Boshqaruvi</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Ism</th>
+                                <th>Login</th>
+                                <th>Tarif</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adm-users-body"></tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+
+        <nav class="m-nav">
+            <button class="active" data-t="home" onclick="openTab('home')">🏠<small>Asosiy</small></button>
+            <button data-t="const" onclick="openTab('const')">🇺🇿<small>Konstitutsiya</small></button>
+            <button data-t="codes" onclick="openTab('codes')">⚖️<small>Kodekslar</small></button>
+            <button data-t="quiz" onclick="openTab('quiz')">⚡<small>Test</small></button>
+
+            <button data-t="dict" onclick="openTab('dict')">📖<small>Lug'at💎</small> </button>
+            <button data-t="cert" onclick="openTab('cert')">🎓<small>Sertifikat💎</small>
+            </button>
+            <button data-t="plus" onclick="openTab('plus')">🌍<small>Reyting</small></button>
+        </nav>
     </div>
 
-    <nav class="m-nav">
-        <button class="active" data-t="home" onclick="openTab('home')">🏠<small>Asosiy</small></button>
-        <button data-t="const" onclick="openTab('const')">🇺🇿<small>Konstitutsiya</small></button>
-        <button data-t="codes" onclick="openTab('codes')">⚖️<small>Kodekslar</small></button>
-        <button data-t="quiz" onclick="openTab('quiz')">⚡<small>Test</small></button>
-        
-                <button data-t="dict" onclick="openTab('dict')" style="color:#7e22ce">📖 Lug'at 💎</button>
-                <button data-t="cert" onclick="openTab('cert')" style="color:#059669">🎓 Sertifikat 💎</button>
-        <button data-t="plus" onclick="openTab('plus')">🌍<small>Reyting</small></button>
-    </nav>
-</div>
+    <script src="law-data.js"></script>
+    <script src="https://jsdelivr.net"></script>
 
-<script src="law-data.js"></script>
-<script src="app.js"></script>
+    <script src="app.js"></script>
 </body>
+
 </html>
